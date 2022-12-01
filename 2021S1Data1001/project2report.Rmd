@@ -1,0 +1,227 @@
+---
+title: "BMI Survey Based on Sleep Quality"
+author: "SID: 500522965 & 500703302 & 510044408 & 510069098"
+subtitle: "Project 2"
+date: "University of Sydney | Unit of Study | April 2021"
+output:
+  html_document:
+    fig_caption: yes
+    number_sections: yes
+    self_contained: yes
+    theme: flatly
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    code_folding: hide
+---
+
+<br>
+
+# Executive Summary
+* The report is aimed at exploring the influence of daily routines on body mass index (BMI).
+* The main discoveries are 
+  + Participants sleep late overall and have problems with their sleep status.
+  + The shorter sleep duration, the higher BMI.
+  + Weight is proportional to BMI.
+
+
+<br>
+
+# Full Report
+
+## Initial Data Analysis (IDA)
+* Sleep debt and body anxiety have long been a major topic of concern. And BMI(Body Mass Index) is an important international standard used to measure the degree of obesity and health.
+* The surveybmi data set comes from group survey made by Wenjuanxing (https://www.wjx.cn/vj/hQSvcig.aspx), which is one of the most authoritative questionnaire platforms in China.
+* The questionnaire is designed with 13 variables, including 8 quantitative variables and 5 qualitative variables.This survey is released on April 18 for 2 days, with 155 participants.
+
+* Limitations:
+  + Insufficient sample size and sample diversity, lack of sample data of 25-40 age group. Since there are 102 female and 53 male among the participants, sex ratio is uneven. Therefore the results may not be generalizable.
+  + Recall bias caused by precise question setting.
+```{r}
+# Read data
+survey = read.csv("surveybmi.csv")
+
+# quick view of the first 6 rows
+head(survey)
+
+# Create a new object of name
+myname <- c(
+  "age",
+  "gender",
+  "identity",
+  "height",
+  "weight",
+  "resttime",
+  "sleephour",
+  "workhour",
+  "sporthour",
+  "sleepquality",
+  "slpqual",
+  "bmi",
+  "slphour"
+)
+
+# assign the new object to survey
+names(survey) <- myname
+
+# quik view of data
+str(survey)
+```
+
+```{r}
+str(iris)
+
+```
+
+
+* The average of sleep duration is 7 hours a day, the longest is 12 hours, and the shortest is 5 hours.
+```{r}
+# show the minimum, maximum, mean and median of sleeping hour
+summary(survey$sleephour)
+```
+
+```{r}
+library(plotly)
+p = plot_ly(data = survey, x = ~sleephour, type = 'box')
+p
+```
+
+* BMI value varied significantly, with minimum and maximum 13.56 and 36.89 respectively. And presents a right-skewed distribution. Most of participants' BMI are concentrated in the healthy range of 19-24, but 37.4% of the participants are still in a sub-healthy state of overweight or underweight.
+```{r}
+# Show the maximum, minimum, mean and median of bmi
+summary(survey$bmi)
+```
+
+```{r}
+# Call the ggplot library
+library(ggplot2)
+
+# Create a histogram to show the distribution of BMI
+p = ggplot(data = survey, aes(x = bmi))
+p + geom_histogram(aes(y = ..density..),  binwidt = 0.5, fill = "lightblue", alph = 0.3) + geom_density(alpha=.2,fill = "red") + xlab('BMI')
+```
+
+
+
+
+
+<br>
+
+
+## Research Question
+
+### Does sleep quality be affected by the time you fall asleep?
+
+* The number of people with poor sleep was similar in each time period so that the time to fall asleep is not the main determinant of sleep quality.
+```{r}
+p = ggplot(data = survey, aes(x = resttime, fill = sleepquality))
+p + geom_bar() + theme(panel.background = element_rect(fill = 'transparent', color = "gray"), axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5, color = "black", size = 9))+ggtitle("hahah")
+```
+
+
+### Does sleep duration affect BMI?
+
+* The average BMI of short sleepers is slightly higher than that of normal sleepers by around 6.45%.
+```{r}
+# calculate the average bmi of people who sleep less than median amount and more than median amount
+mean(survey$bmi[survey$sleephour < 7])
+mean(survey$bmi[survey$sleephour > 7])
+```
+
+* This box plot below demonstrates the BMI of three groups of people who sleep less than, equal to, and more than 7 hours a day. Through comparing the median BMI of the three groups,people who sleep for less than 7 hours had the highest BMI(median 22.265), while those who sleep for more than 7 hours had the lowest BMI(median 20.73). However the result are not conclusive because most extreme samples of larger BMI are found in the longer sleeper group.
+```{r}
+library(plotly)
+p = plot_ly(data = survey, x = ~bmi, color = ~slphour, type = 'box')
+p
+```
+
+* In order to avoid being affected by extreme values, only data from lower threshold to upper threshold are selected for analyzing.
+```{r}
+# Calculate the IQR of BMI
+iqrbmi = IQR(survey$bmi)
+# IQR of BMI = 4.18, q1 of bmi = 19.7, q3 of bmi = 23.89
+# UT of BMI = q3 + 1.5IQR = 30.16
+UT = 23.89 + 1.5*iqrbmi
+# LT of BMI = q1 - 1.5IQR = 13.43
+LT = 19.7 - 1.5*iqrbmi
+# Select the data from LT to UT
+surveymain = subset(survey, survey$bmi<UT & survey$bmi>LT)
+# Calculate the value of correlation between sleep duration and BMI
+cor(surveymain$sleephour, surveymain$bmi)
+```
+
+* The scatter plot below indicates a weak correlation with coefficient -0.27 between sleep duration and BMI.
+```{r}
+# Plot the scatter plot of sleephour and BMI
+c=ggplot(surveymain,aes(x=sleephour,y=bmi))
+c+geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+```
+
+<br>
+
+
+### What is the correlation between weight and BMI?
+
+* The distribution in the scatter plot present an uptrend, so it seems that there's an apparent linear relationship between weight and BMI.
+```{r}
+#constract a scatter plot
+c=ggplot(survey,aes(x=weight,y=bmi))
+c+geom_point()
+```
+
+* The correlation coefficient of weight and BMI is calculated to be 0.86, suggesting that there's a strong positive correlation between the two.
+```{r}
+#calculate the correlation coefficient
+cor(survey$weight,survey$bmi)
+```
+
+* Obtained the intercept is 2.8462, and slope is 2.7478 by linear model fitting.
+```{r}
+#calcutate the linear regresstion model
+L=lm(survey$weight~survey$bmi)
+#summary 
+L$coeff
+summary(L)
+```
+
+* Through straight-line fitting, it is found that the weight and BMI show a linear upward trend, that is, the heavier the weight, the higher the BMI.
+```{r}
+#darw on the scatter plot
+c=ggplot(survey,aes(x=weight,y=bmi)) 
+c + geom_point() + geom_smooth(method = "lm", se = FALSE)
+```
+
+* The figure below illustrates the residuals (res) and the independent variable (weight) as a residual plot. This residual plot shows a fairly random pattern - "fan out" from left to right. Since the distribution of the residual graph is not completely random, this graph does not match the previous linear model. Therefore, it is concluded that weight is not the only factor that determines BMI.
+```{r}
+#construct the residual plot
+res=L$residuals
+ggplot(survey,aes(weight,res))+geom_point()+geom_hline(yintercept = 0, colour="yellow")
+```
+
+
+# Articles
+In the relevant studies, it has claimed that BMI is closely related to weight(Hoor, Plasqui, Schols, Kok, 2018. Peterson, Thomas, Blackburn, Heymsfield, 2016). It also has stated that sleep duration more than 7 hours a day is associated with BMI decrease.(Sung, 2017).
+
+# References
+
+Peterson, C. M., Thomas, D. M., Blackburn, G. L., & Heymsfield, S. B. (2016). Universal equation for estimating ideal body weight and body weight at any BMI. *The American journal of clinical nutrition*, 103(5), 1197–1203.
+
+Sung, B. (2017). Analysis of the Relationship between Sleep Duration and Body Mass Index in a South Korean Adult Population: A Propensity Score Matching Approach. *Journal Of Lifestyle Medicine*, 7(2): 76–83.. doi: doi: 10.15280/jlm.2017.7.2.76
+
+Weight-height relationships and body mass index: Some observations from the diverse populations collaboration. (2005). *American Journal Of Physical Anthropology*, 128(1), 220-229. doi: 10.1002/ajpa.20107
+
+Style: APA 
+
+<br>
+
+# Acknowledgements
+* April 4 13:00-15:00 Discuss and determine the research topic (4 persons together)
+* April 18 13:30-15:30 Designed the questionnaire (4 persons together)
+* April 24 Clean the data, do some IDA work and discuss the analysis of research question (4 persons together)
+* April 28 Produce the report, IDA (by Zhang);  Reference collect and arrange(by You);Research question 1 and 2 (by Xu and Yao);Final linear model (4 persons together)
+* April 29 Prepare presentation (4 persons together)
+* April 30 Presentation recording (4 persons together)
+
+
+<br>

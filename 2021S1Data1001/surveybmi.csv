@@ -1,0 +1,156 @@
+1.Your age,2. Your gender,3. Your job,4. Your height,5. Your weight,7. What time do you sleep,8. How long do you sleep every day,9. How long do you work or study per day,10. How long do you exercise per day,13. How is your sleeping quality,14. Your sleep quality,BMI,How long you sleep per day
+19,female,undergraduate,170,48,after 1 am,6,10,2,often dream and not so good,3,16.61,less than 7
+18,female,undergraduate,164,55,12 am to 1 am,8,4,0,occasionally dream and good,2,20.45,more than 7
+18,female,undergraduate,167,60,after 1 am,7.5,12,0.5,occasionally dream and good,2,21.51,more than 7
+19,male,undergraduate,174,76,11 pm to 12 am,6,12,2,occasionally dream and good,2,25.1,less than 7
+18,female,undergraduate,160,55,12 am to 1 am,8,13,0,occasionally dream and good,2,21.48,more than 7
+18,female,undergraduate,169,50,11 pm to 12 am,8,10,2,often dream and not so good,3,17.51,more than 7
+23,female,employee,169,55,11 pm to 12 am,8,8,0,hard to fall sleep and very bad,4,19.26,more than 7
+23,male,undergraduate,180,70,11 pm to 12 am,6,8,4,fall fast asleep and very good,1,21.6,less than 7
+19,female,undergraduate,170,60,11 pm to 12 am,12,4,1,occasionally dream and good,2,20.76,more than 7
+18,female,undergraduate,173,52,after 1 am,8,5,2,often dream and not so good,3,17.37,more than 7
+19,female,undergraduate,165,55,before 11 pm,9,8,1,occasionally dream and good,2,20.2,more than 7
+22,female,undergraduate,161,51,12 am to 1 am,8,7,1,occasionally dream and good,2,19.68,more than 7
+19,female,undergraduate,160,80,12 am to 1 am,8,12,0,fall fast asleep and very good,1,31.25,more than 7
+25,male,employee,167,65,11 pm to 12 am,7,10,0.5,fall fast asleep and very good,1,23.31,equal to 7
+20,female,undergraduate,165,45,12 am to 1 am,7,4,1,occasionally dream and good,2,16.53,equal to 7
+20,female,postgraduate,168,57,after 1 am,7,9,1,occasionally dream and good,2,20.2,equal to 7
+24,female,undergraduate,165,45,12 am to 1 am,6,8,1,often dream and not so good,3,16.53,less than 7
+20,female,undergraduate,177,63,12 am to 1 am,10,12,2,occasionally dream and good,2,20.11,more than 7
+19,female,undergraduate,172,54,after 1 am,9,10,1,often dream and not so good,3,18.25,more than 7
+22,female,employee,176.8,65,12 am to 1 am,7,7,1,occasionally dream and good,2,20.79,equal to 7
+20,female,undergraduate,162,50,11 pm to 12 am,8,3,1,occasionally dream and good,2,19.05,more than 7
+68,male,retired,180,79,before 11 pm,7,2,1,often dream and not so good,3,24.38,equal to 7
+19,female,undergraduate,176,64,after 1 am,5,8,0,often dream and not so good,3,20.66,less than 7
+20,male,undergraduate,176,70,after 1 am,8,6,1,fall fast asleep and very good,1,22.6,more than 7
+19,male,undergraduate,180,90,after 1 am,7,10,2,fall fast asleep and very good,1,27.78,equal to 7
+22,female,undergraduate,174,62,after 1 am,7,6,3,often dream and not so good,3,20.48,equal to 7
+21,female,undergraduate,160,85,12 am to 1 am,8,2,0,occasionally dream and good,2,33.2,more than 7
+19,female,undergraduate,165,50,after 1 am,10,5,0,often dream and not so good,3,18.37,more than 7
+21,female,undergraduate,178,65,12 am to 1 am,8,6,1,occasionally dream and good,2,20.52,more than 7
+18,female,undergraduate,170,58,11 pm to 12 am,7,8,1,often dream and not so good,3,20.07,equal to 7
+19,male,undergraduate,185,75,after 1 am,8,10,3,occasionally dream and good,2,21.91,more than 7
+23,male,undergraduate,180,67.5,12 am to 1 am,7,10,2,fall fast asleep and very good,1,20.83,equal to 7
+20,male,undergraduate,182,90,after 1 am,6,12,2,occasionally dream and good,2,27.17,less than 7
+21,female,undergraduate,163,51,12 am to 1 am,12,6,1.5,occasionally dream and good,2,19.2,more than 7
+21,female,undergraduate,168,59,after 1 am,8,4,0.5,occasionally dream and good,2,20.9,more than 7
+20,male,undergraduate,183,80,after 1 am,6,4,0,occasionally dream and good,2,23.89,less than 7
+18,female,undergraduate,164,56,after 1 am,6,3,0,often dream and not so good,3,20.82,less than 7
+40,male,undergraduate,190,80,11 pm to 12 am,7,5,4,fall fast asleep and very good,1,22.16,equal to 7
+24,female,postgraduate,174,59,after 1 am,7,4,0.5,often dream and not so good,3,19.49,equal to 7
+24,female,postgraduate,160,40,12 am to 1 am,8,10,1,occasionally dream and good,2,15.63,more than 7
+18,female,undergraduate,158,55,after 1 am,10,5,2,often dream and not so good,3,22.03,more than 7
+21,female,undergraduate,165,98,12 am to 1 am,8,3,0.5,occasionally dream and good,2,36,more than 7
+24,female,postgraduate,160,50,11 pm to 12 am,7,10,2,often dream and not so good,3,19.53,equal to 7
+18,female,undergraduate,160,50,after 1 am,7,10,0.5,fall fast asleep and very good,1,19.53,equal to 7
+23,male,undergraduate,178,69,12 am to 1 am,7,6,0.5,fall fast asleep and very good,1,21.78,equal to 7
+20,female,undergraduate,160,44,after 1 am,10,3,0,fall fast asleep and very good,1,17.19,more than 7
+21,female,undergraduate,166,50,12 am to 1 am,9,4,0.6,occasionally dream and good,2,18.14,more than 7
+20,male,undergraduate,174,68,11 pm to 12 am,8,6,1,occasionally dream and good,2,22.46,more than 7
+67,female,retired,158,63,11 pm to 12 am,6,4,1,occasionally dream and good,2,25.24,less than 7
+18,female,undergraduate,163,98,after 1 am,7,12,0,often dream and not so good,3,36.89,equal to 7
+19,female,undergraduate,183,53,12 am to 1 am,8,8,0,occasionally dream and good,2,15.83,more than 7
+24,female,postgraduate,167,54,after 1 am,6.5,8,1,hard to fall sleep and very bad,4,19.36,less than 7
+18,female,undergraduate,168,55,after 1 am,8.5,12,0,hard to fall sleep and very bad,4,19.49,more than 7
+20,female,undergraduate,168,90,12 am to 1 am,8,6,0.5,occasionally dream and good,2,31.89,more than 7
+21,female,undergraduate,177,57,11 pm to 12 am,7,8,1,occasionally dream and good,2,18.19,equal to 7
+18,male,undergraduate,183,90,11 pm to 12 am,7,5,2,fall fast asleep and very good,1,26.87,equal to 7
+19,male,undergraduate,178,62.5,11 pm to 12 am,7,8,2,fall fast asleep and very good,1,19.73,equal to 7
+48,female,employee,162,60,before 11 pm,7,8,1,fall fast asleep and very good,1,22.86,equal to 7
+56,female,retired,162,55,11 pm to 12 am,8,2,0,occasionally dream and good,2,20.96,more than 7
+26,female,employee,170,64,before 11 pm,6.5,10.5,0.5,often dream and not so good,3,22.15,less than 7
+21,male,undergraduate,181,93,12 am to 1 am,8,5,0.5,often dream and not so good,3,28.39,more than 7
+65,female,retired,160,53,before 11 pm,6,5,2,often dream and not so good,3,20.7,less than 7
+58,male,retired,177,87,before 11 pm,7,7,0.5,occasionally dream and good,2,27.77,equal to 7
+52,male,undergraduate,160,59,11 pm to 12 am,7.5,14,0.5,fall fast asleep and very good,1,23.05,more than 7
+42,female,employee,162,60,11 pm to 12 am,7,3,1,often dream and not so good,3,22.86,equal to 7
+28,male,employee,175,70,11 pm to 12 am,8,10.5,0,occasionally dream and good,2,22.86,more than 7
+47,male,undergraduate,173,58,12 am to 1 am,6,8,0.5,occasionally dream and good,2,19.38,less than 7
+49,female,retired,173,84,11 pm to 12 am,5,1,1,hard to fall sleep and very bad,4,28.07,less than 7
+50,male,retired,182,81,12 am to 1 am,7,6,0.1,occasionally dream and good,2,24.45,equal to 7
+20,female,undergraduate,168,84,12 am to 1 am,6,11,0.5,hard to fall sleep and very bad,4,29.76,less than 7
+47,female,undergraduate,165,50,12 am to 1 am,8,10,0,fall fast asleep and very good,1,18.37,more than 7
+45,female,undergraduate,166,54,11 pm to 12 am,6,10,0,often dream and not so good,3,19.6,less than 7
+18,female,undergraduate,179,50,11 pm to 12 am,7,4,1,occasionally dream and good,2,15.61,equal to 7
+20,male,undergraduate,187,71,after 1 am,7,4,2,occasionally dream and good,2,20.3,equal to 7
+21,male,undergraduate,178,65,12 am to 1 am,7,6,1,fall fast asleep and very good,1,20.52,equal to 7
+20,male,undergraduate,175,70,after 1 am,7,8,2,fall fast asleep and very good,1,22.86,equal to 7
+19,male,undergraduate,172,75,after 1 am,7,4,0,occasionally dream and good,2,25.35,equal to 7
+45,female,employee,163,55,11 pm to 12 am,7.5,8,3,fall fast asleep and very good,1,20.7,more than 7
+20,male,undergraduate,190,78,after 1 am,8,10,0,hard to fall sleep and very bad,4,21.61,more than 7
+47,female,employee,158,55.5,before 11 pm,7,8,0.5,occasionally dream and good,2,22.23,equal to 7
+45,female,employee,158,51,before 11 pm,8,9,2,occasionally dream and good,2,20.43,more than 7
+50,female,employee,160,59,before 11 pm,6,8,0.5,often dream and not so good,3,23.05,less than 7
+50,male,retired,170,75,before 11 pm,8,0.5,1,often dream and not so good,3,25.95,more than 7
+49,male,employee,176,42,12 am to 1 am,5.5,8,1,occasionally dream and good,2,13.56,less than 7
+59,female,retired,153,53,before 11 pm,8,2,1,often dream and not so good,3,22.64,more than 7
+44,female,employee,158,55,before 11 pm,6,10,0,often dream and not so good,3,22.03,less than 7
+55,female,retired,165,50,before 11 pm,9,8,2,often dream and not so good,3,18.37,more than 7
+18,female,undergraduate,158,49,11 pm to 12 am,7.5,6.5,0.5,occasionally dream and good,2,19.63,more than 7
+23,female,undergraduate,168,53,11 pm to 12 am,8,6,1,occasionally dream and good,2,18.78,more than 7
+49,female,employee,161,58,11 pm to 12 am,6,7,0.5,often dream and not so good,3,22.38,less than 7
+46,male,undergraduate,175,80,11 pm to 12 am,6,10,0.5,occasionally dream and good,2,26.12,less than 7
+53,female,retired,168,75,before 11 pm,6,10,2,occasionally dream and good,2,26.57,less than 7
+25,female,undergraduate,167,51,after 1 am,7,10,0.5,occasionally dream and good,2,18.29,equal to 7
+50,female,employee,165,60,before 11 pm,8,8,1,often dream and not so good,3,22.04,more than 7
+55,male,employee,179,80,before 11 pm,8,8,2,occasionally dream and good,2,24.97,more than 7
+53,female,employee,160,55,before 11 pm,6.5,8,1,occasionally dream and good,2,21.48,less than 7
+49,male,employee,178,95,11 pm to 12 am,7,6,0.5,occasionally dream and good,2,29.98,equal to 7
+68,male,retired,176,81,before 11 pm,8,6,0.5,fall fast asleep and very good,1,26.15,more than 7
+49,female,employee,167,70,before 11 pm,7,12,2,often dream and not so good,3,25.1,equal to 7
+51,male,employee,173,73,before 11 pm,8,8,1,often dream and not so good,3,24.39,more than 7
+58,male,retired,170,76,before 11 pm,8,8,1,occasionally dream and good,2,26.3,more than 7
+47,female,employee,165,60,11 pm to 12 am,6.5,8,0.5,often dream and not so good,3,22.04,less than 7
+48,female,employee,167,65,11 pm to 12 am,6,9,0,occasionally dream and good,2,23.31,less than 7
+21,female,undergraduate,168,60,12 am to 1 am,8,8,1,fall fast asleep and very good,1,21.26,more than 7
+21,female,undergraduate,160,61,11 pm to 12 am,8,9,2,fall fast asleep and very good,1,23.83,more than 7
+20,female,undergraduate,159,52,before 11 pm,7,10,1,occasionally dream and good,2,20.57,more than 7
+22,male,undergraduate,180,70,before 11 pm,8,6,3,often dream and not so good,3,21.6,more than 7
+24,male,postgraduate,184,60,before 11 pm,8,8,1,occasionally dream and good,2,17.72,more than 7
+24,male,postgraduate,185,68,11 pm to 12 am,6,12,1,occasionally dream and good,2,19.87,less than 7
+22,female,undergraduate,165,65,11 pm to 12 am,7,5,2,often dream and not so good,3,23.88,equal to 7
+22,male,undergraduate,174,60,after 1 am,9,1.5,0,hard to fall sleep and very bad,4,19.82,more than 7
+22,female,postgraduate,158,52,11 pm to 12 am,5,11,1,fall fast asleep and very good,1,20.83,less than 7
+21,male,undergraduate,175,65,before 11 pm,10,8,2,fall fast asleep and very good,1,21.22,more than 7
+22,male,undergraduate,169,60,11 pm to 12 am,9,8,2,fall fast asleep and very good,1,21.01,more than 7
+25,male,postgraduate,182,74,before 11 pm,8,10,3,fall fast asleep and very good,1,22.34,more than 7
+21,male,undergraduate,165,45,11 pm to 12 am,8,7,3,occasionally dream and good,2,16.53,more than 7
+22,female,undergraduate,168,55,11 pm to 12 am,8,9,2,fall fast asleep and very good,1,19.49,more than 7
+50,female,employee,158,65,11 pm to 12 am,5,6,0.5,occasionally dream and good,2,26.04,less than 7
+26,male,employee,178,78,11 pm to 12 am,6,9,0,often dream and not so good,3,24.62,less than 7
+22,male,undergraduate,178,66,11 pm to 12 am,9,8,1,fall fast asleep and very good,1,20.83,more than 7
+21,female,undergraduate,165,55,12 am to 1 am,5,10,1,fall fast asleep and very good,1,20.2,less than 7
+23,female,postgraduate,170,65,11 pm to 12 am,5,9,2,fall fast asleep and very good,1,22.49,less than 7
+24,male,employee,180,65,11 pm to 12 am,8,9,1,occasionally dream and good,2,20.06,more than 7
+19,female,undergraduate,172,55,12 am to 1 am,10.5,7.3,0.2,occasionally dream and good,2,18.59,more than 7
+22,female,undergraduate,168,55,11 pm to 12 am,7,9,1,occasionally dream and good,2,19.49,equal to 7
+23,female,postgraduate,168,58,11 pm to 12 am,6,8,1,occasionally dream and good,2,20.55,less than 7
+21,female,undergraduate,168,58,11 pm to 12 am,8,9,1,occasionally dream and good,2,20.55,more than 7
+22,female,undergraduate,169,55,11 pm to 12 am,7,9,1,fall fast asleep and very good,1,19.26,equal to 7
+24,female,postgraduate,175,70,11 pm to 12 am,8,9,1,occasionally dream and good,2,22.86,more than 7
+21,female,undergraduate,168,60,11 pm to 12 am,8,9,1,occasionally dream and good,2,21.26,more than 7
+22,female,undergraduate,165,53,11 pm to 12 am,7,9,1,occasionally dream and good,2,19.47,equal to 7
+23,female,undergraduate,168,58,before 11 pm,9,9,0,occasionally dream and good,2,20.55,more than 7
+23,female,postgraduate,170,60,12 am to 1 am,5,10,2,fall fast asleep and very good,1,20.76,less than 7
+19,female,undergraduate,165,46,12 am to 1 am,7.5,6,0.5,occasionally dream and good,2,16.9,more than 7
+23,female,undergraduate,168,53,11 pm to 12 am,6,10,0,occasionally dream and good,2,18.78,less than 7
+23,male,postgraduate,168,58,11 pm to 12 am,8,9,1,fall fast asleep and very good,1,20.55,more than 7
+33,male,employee,180,88,12 am to 1 am,5,10,0,hard to fall sleep and very bad,4,27.16,less than 7
+34,male,postgraduate,184,75,11 pm to 12 am,6,8,1,fall fast asleep and very good,1,22.15,less than 7
+18,male,undergraduate,178,65,after 1 am,8,5,1,occasionally dream and good,2,20.52,more than 7
+49,female,undergraduate,155,75,12 am to 1 am,5,9,1,often dream and not so good,3,31.22,less than 7
+29,male,employee,178,74,after 1 am,9,3,0.5,often dream and not so good,3,23.36,more than 7
+42,female,employee,170,63.5,before 11 pm,7,9,1,occasionally dream and good,2,21.97,equal to 7
+65,male,retired,170,65,before 11 pm,7,7,2,occasionally dream and good,2,22.49,equal to 7
+30,female,undergraduate,162,52,before 11 pm,8,8,0,often dream and not so good,3,19.81,more than 7
+40,female,employee,165,70,before 11 pm,7,8,0,hard to fall sleep and very bad,4,25.71,equal to 7
+41,female,employee,164,57,11 pm to 12 am,7,10,0,occasionally dream and good,2,21.19,equal to 7
+45,male,employee,174,86,before 11 pm,6,8,0.5,often dream and not so good,3,28.41,less than 7
+46,female,employee,162,60.5,11 pm to 12 am,5.5,8,0,often dream and not so good,3,23.05,less than 7
+37,female,employee,160,59,11 pm to 12 am,7,9,0,occasionally dream and good,2,23.05,equal to 7
+56,male,employee,170,80,before 11 pm,8,8,4,fall fast asleep and very good,1,27.68,more than 7
+68,female,retired,168,70,11 pm to 12 am,8,2,2,occasionally dream and good,2,24.8,more than 7
+47,female,retired,158,70,before 11 pm,5,2,1,hard to fall sleep and very bad,4,28.04,less than 7
+21,female,employee,160,69,before 11 pm,7,6,1,fall fast asleep and very good,1,26.95,equal to 7
+75,female,retired,156,60,before 11 pm,5,0,1,often dream and not so good,3,24.65,less than 7
+45,female,employee,156,75,12 am to 1 am,5,9,1,often dream and not so good,3,30.82,less than 7
