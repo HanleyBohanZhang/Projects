@@ -1,0 +1,455 @@
+2021-04-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (URL): Add repo url
+
+2021-01-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Reset
+	pnasbluetext fallback to value in pinp.cls
+
+2020-12-28  Dirk Eddelbuettel  <edd@debian.org>
+
+        * .github/workflows/ci.yaml: Add CI runner using r-ci
+	* README.md: Add new CI badge
+
+2020-10-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.10
+
+2020-09-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Add columns mode
+	with a special nod of appreciation to Grant McDermott
+
+2020-09-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+2020-09-09  Ilya Kashnitsky <ilya.kashnitsky@gmail.com>
+
+	* R/pinp.R: New (optional) document_date YAML variable
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Idem
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Idem
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+
+2020-04-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Add 'last commit' badge
+
+2019-10-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Add 'See also' section
+
+2019-09-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.9
+
+2019-09-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* R/pinp.R: No longer copy titlesec.sty in as underlying issue fixed
+
+	* vignettes/pinp.Rmd: Mention widetext deprecation and altrenatives.
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Ditto
+
+2019-09-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/pinp.Rmd: Document 'watermark'
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Support
+	document option 'watermark'
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Ditto
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Illustrate use
+	* R/pinp.R: Document the 'watermark' options
+	* man/pinp.Rd: Document and illustrate option
+
+2019-09-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Remove stray
+	\code{\makeatother} causing all this trouble -- with huge thank you
+	to Javier Bezos and Norbert Preining for their help in isolating this
+
+2019-09-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.8
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Remove docs for
+	'watermark' as underlying PNAS style no longer has a toggle
+	* R/pinp.R: Remove documentation of watermark option no longer
+	supported as a toggle in the pinp.cls file
+	* man/pinp.Rd: Ditto
+	* vignettes/pinp.Rmd: Ditto
+
+	* inst/rmarkdown/templates/pdf/skeleton/titlesec.sty: Adding older
+	working version as current version in texlive has an issue with pnas
+	* inst/rmarkdown/templates/pdf/skeleton/ttlkeys.def: Ditto
+	* R/pinp.R (pinp): Copy titlesec.sty and ttlkeys.def into work directory
+
+2019-09-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Updated to current
+	pnas-new files dates 2018-05-06
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Removed hook
+	for watermark for now
+
+2019-07-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Added upquote
+	package to use actual quotes in verbatim mode
+
+2019-06-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version 
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Comment-out two
+	'provides' from included LaTeX class code
+
+2019-01-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Add dependency badge
+
+2019-01-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.7
+
+2019-01-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Add new definition
+	for \doi{} rendering as hyperlink, with thanks to Achim Zeileis!
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Also support
+	previouse use of 'doi_footer' as 'doi'
+	* vignettes/pinp.Rmd: Document 'doi_footer'
+
+2019-01-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Rename 'doi'
+	YAML option to 'doi_footer' to permit doi display in bibiography
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Idem
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+
+2019-01-08  Ilya Kashnitsky <ilya.kashnitsky@gmail.com>
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: New
+	data_subtitle option supported from YAML header
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Idem
+	* vignettes/ping.Rmd: Document new option
+
+2018-12-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml: Use rocker/r-rmd container for Travis CI
+
+2018-07-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/pinp.Rmd: Document '~' as address and affiliation code
+	to suppress the display of affiliation
+
+2018-07-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/pinp.Rmd: Document YAML header options
+
+2018-07-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.6
+
+	* R/pinp.R: Document new option 'collapse'
+	* man/pinp.Rd: Idem
+
+2018-07-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/pinp.R (pinp): Added support for 'collapse' option via YAML header
+	support collapse mode
+
+2018-06-20  Saghir Bashir  <saghir@ilustat.com>
+
+	* vignettes/pinp.Rmd: Correction to widetext use
+
+2018-06-11  Saghir Bashir  <saghir@ilustat.com>
+
+	* vignettes/pinp.Rmd: Support 'papersize' as YAML header option
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Idem
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Idem
+
+2018-06-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.5
+
+2018-06-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/bib.tex: Split out of vignette as pandoc 2.* no longer
+	allows embedding this in the header
+	* vignettes/pinp.Rmd: Use bib.tex, other small updates
+
+2017-11-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.4
+
+2017-11-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/pinp.R: Document 'skip_final_break'
+	* man/pinp.Rd: Idem
+
+2017-11-03  James Joseph Balamuta  <balamut2@illinois.edu>
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Added skip_final_break
+	toggle to allow users to opt out of \pnasbreak, which is on by default.
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Added example using
+	skip_final_break toggle.
+	* vignettes/pinp.Rmd: Idem
+
+2017-11-02  Enrico Spinielli  <enrico.spinielli@gmail.com>
+
+	* vignettes/pinp.Rmd: Typo
+
+2017-10-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/NEWS.Rd: Refer to pinp, not tint
+
+2017-10-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.3
+
+2017-10-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* ChangeLog: Updated
+	* inst/NEWS.Rd: Idem
+
+2017-10-26  Michael Nelson  <michael.nelson.r.pkg@gmail.com>
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Typos
+	* R/pinp.R: Idem
+	* man/pinp.Rd: Idem
+
+2017-10-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/pinp.R: Added documentation for YAML frontmater
+	* man/pinp.Rd: Idem
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Cleanup
+
+2017-10-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Support
+	YAML frontmatter arguments headercolor and linkcolor
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Minor cleanup
+	related to the two colour variables
+
+2017-10-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Condition
+	acknowledgements, remove matmethods and pnasbreak
+
+	* vignettes/pinp.Rmd (numbersections): Turn on numbered sections
+	(up to one level) which makes less of a hash of the outline
+
+2017-09-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.2
+
+	* vignette/pinp.Rmd: More edits and small extensions
+
+2017-09-19  James Joseph Balamuta  <balamut2@illinois.edu>
+
+	* vignette/pinp.Rmd: Add code style to section headers.
+
+	* vignette/pinp.Rmd: Removed unnumbered and ids for sections
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Removed
+	alphabetic number from subsections
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Added new
+	numbered section keys
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+	* vignette/pinp.Rmd: Idem
+
+2017-09-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Improved references
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+
+	* vignette/pinp.Rmd (vignette): Vignette meta data added here too
+
+	* cleanup: Added
+
+2017-09-18  James Joseph Balamuta  <balamut2@illinois.edu>
+
+	* README.md: Modified to indicate one-column availability
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Added vignette
+	meta data and changed title to reflect one-column availability
+
+2017-09-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignette/pinp.Rmd: Added a short vignette
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.bib: Filled entries
+	and sorted buffer via Emacs mode
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Set
+	bibliography style to given style with JSS as default and fallback
+	* inst/rmarkdown/templates/pdf/skeleton/jss.bst: Added jss.bst
+
+	* R/pinp.R (pinp): Adjust figure size and font defaults; also copy
+	jss.bst if not present
+
+2017-09-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/pinp.R (pinp): Minor edits, copy in pinp.cls if not present,
+	provided output hook for shaded and framed output
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Shaded and
+	framed output box
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Correct
+	defaults to 9pt, two-column, two-side, no lineno, no watermark
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Reflect
+	various options
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Correct
+	keywords use ensuring processing both with and without keywords
+
+	* README.md: Updated to reflect CRAN status
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Removed cruft
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Move some
+	endmatter material here from the \code{skeleton.Rmd} file
+
+2017-09-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Release 0.0.1
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Misc edits
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+
+	* R/pinp.R: Correct example in manual page
+	* man/pinp.Rd: Idem
+
+2017-09-15  James Joseph Balamuta  <balamut2@illinois.edu>
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Allow
+	fontsize, two-column/two-side, watermark, line set in yaml heaer
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Ditto
+
+2017-09-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/NEWS.Rd: Added
+	* README.md: Updated text and screenshots
+
+2017-09-13  James Joseph Balamuta  <balamut2@illinois.edu>
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Quick pass over
+	content.
+
+	* R/pinp.R: Added references and see also section.
+	* man/pinp.Rd: idem
+
+	* inst/rmarkdown/templates/pdf/resources/pinp.bib: Added citations
+	for rticles, rmarkdown, and knitr. Changed PeerJ key away from DOI.
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Updated and
+	added citations in skeleton
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Moved in
+	bibliography creation from the line at end of file.
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Removed
+	single line bibliography entry
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Bumped
+	default height of figure based on Dirk's suggestion.
+
+	* man/pinp.Rd: Re-ran roxygen2 to pick up citation_package
+	parameter added.
+
+2017-09-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Further
+	refinements for fonts, colors, equation numbering and other edits
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Example use
+	of new fonts, colors, equantion references, two-column figure
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.bib: Simplify
+
+2017-09-12  James Joseph Balamuta  <balamut2@illinois.edu>
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls:  Added footer content
+	hook with a default value of Package Vignette.
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Setup pandoc
+	hook for footer_content variable
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: idem
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Allowed doi
+	field to receive URLs.
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: idem
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Added watermark
+	pandoc variable with default value of false.
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: idem
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Changed watermark
+	usage to rely on built-in print feature of xwatermark
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Fix lineno
+	pandoc variable usage
+
+2017-09-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Use mdframed for
+	framed and shaded code boxen (following existing Rcpp vignettes)
+
+2017-09-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/pinp.R: Use basic knitr code typesetting with fewer overrides
+
+2017-09-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Acknowledge sources (rticles, pnas)
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+
+2017-09-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/resources/template.tex: Updated
+	footer showing project URL
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Idem
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Idem
+
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd: Partially
+	rewritten  / simplified to better suit project
+
+2017-09-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/pinp.R (pinp): Updated to support LaTeX citations
+	* inst/rmarkdown/templates/pdf/skeleton/skeleton.Rmd (Note): Added
+	reference to bibiography example
+	* inst/rmarkdown/templates/pdf/skeleton/pinp.cls: Added one set of
+	Sweave-alike environments
+
+	* NAMESPACE: Added import statements for knitr and markdown
+	* DESCRIPTION: Ditto
+
+2017-09-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Added
+	* ChangeLog: Idem
+	* .travis.yml (install): Idem
+
+	* docs/*: Added with example pdf and png files
+
+2017-09-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/rmarkdown/templates/pdf/*: First version
+	* R/pinp.R (pinp): Idem
+	* man/pinp.Rd: Idem
+	* DESCRIPTION: Idem
+	* NAMESPACE: Idem

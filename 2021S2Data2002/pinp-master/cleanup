@@ -1,0 +1,9 @@
+#!/bin/sh
+
+(cd vignettes && rm -rf *~ \
+        jss.bst \
+        pinp.aux pinp.bbl pinp.bib pinp.cls pinp.log pinp.out pinp.pdf pinp.tex pinp.xwm pinp_files/ \
+     	titlesec.sty ttlkeys.def && cd ..)
+
+## emacs auctex leaves auto/ behind
+(cd inst/rmarkdown/templates/pdf && rm -rf resources/auto/ skeleton/auto/ && cd ..)

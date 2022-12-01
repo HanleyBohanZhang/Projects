@@ -1,0 +1,369 @@
+---
+title: Identifying Risk Factors Responsible for Differences in Birth Weight
+
+# Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
+
+author:
+  - name: Bohan Zhang
+    affiliation: a
+  - name: Michael Podbury
+    affiliation: a
+  - name: Bingkun Zhou
+    affiliation: a  
+  - name: Jingqin Jiang
+    affiliation: a
+  - name: Zhenyao Dou
+    affiliation: a
+address:
+  - code: a
+    address: The University of Sydney, NSW, 2008
+
+
+# For footer text
+lead_author_surname: Last name
+
+
+abstract: |
+  This study is aimed to investigate how the mother's health state influences the infant birth weight through developing a multiple linear regression model for prediction. The final model is formulated by applying the Akaike Information Criterion(AIC) and manually removing inappropriate predictors based on justifying the significance level. Results illustrate that the higher mothers’ last menstrual weight aided in the increase in birth weight. However, non-white race, uterine irritation, smoking, and hypertension can cause a decreasing impact on birth weight, which is consistent with prior research. The adjusted r-squared of the final model is 0.195 which reflects that the goodness-of-fit in the regression model may not be as expected, also suggesting a limited extent in explaining the total variance of observed birth weight.
+  
+keywords:
+  - birth weight
+  - maternal health
+  - multiple linear regression
+
+## must be one of: pnasresearcharticle (usual two-column layout), pnasmathematics (one column layout), or pnasinvited (invited submissions only)
+pnas_type: pnasresearcharticle
+
+bibliography: pnas-sample.bib
+csl: pnas.csl
+
+## change to true to add optional line numbering
+lineno: false
+
+output: rticles::pnas_article
+---
+
+```{r, load_refs, echo=FALSE, cache=FALSE, message=FALSE}
+# library(RefManageR)
+# BibOptions(check.entries = FALSE, 
+#            bib.style = "authoryear",
+#            cite.style = 'authoryear', 
+#            style = "markdown",
+#            hyperlink = FALSE, 
+#            dashed = FALSE)
+# myBib <- ReadBib("assets/example.bib", check = FALSE)
+# before knitting:
+#install.packages('tinytex')
+#tinytex::install_tinytex()
+#install.packages('pinp')
+#install.packages("jtools")
+#devtools::install_github("jacob-long/jtools")
+library(tidyverse)
+library(GGally)
+library(car)
+library(ggfortify)
+library(sjPlot)
+library(equatiomatic)
+library(faraway)
+library(qtlcharts)
+library(ggfortify)
+library(caret)
+library(knitr)
+library(jtools)
+library(cowplot)
+library(kableExtra)
+library(dplyr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r load_data, message=FALSE, fig.height=4.5, fig.width=12, fig.retina=2, fig.align='center', warning=FALSE}
+# import the data
+data("birthwt", package = "MASS")
+
+# remove LOW variable
+birthwt <- subset (birthwt, select = -low)
+
+# factorize the spread count variable, transfer the binary variable to boolean
+birthwt = birthwt %>% 
+  mutate(race = factor(race, labels = c("white", "black", "other")),
+         smoke = factor(smoke, labels = c("False", "TRUE")),
+         ptl = ifelse(ptl > 0, "1+", ptl),
+         ht = factor(ht, labels = c("FALSE", "True")),
+         ui = factor(ui, labels = c("FALSE", "TRUE")),
+         ftv = ifelse(ftv > 1, "2+", ftv))
+colnames(birthwt) <- c("age","weight_last_menstrual", "race","smoking_status", "premature_labor","hypertension", "uterine_irr","physician_visits", "birth_weight")
+
+
+# remove the outliers 
+birthwt_clean = birthwt[birthwt$age <= 36 & birthwt$weight_last_menstrual <= 185,]
+
+# Log transform
+birthwt_lg = birthwt_clean %>% 
+  mutate(birth_weight  = log(birth_weight))
+
+# null model
+M0 = lm(birth_weight ~ 1, data = birthwt_lg)
+# full model
+M1 = lm(birth_weight ~ ., data = birthwt_lg)
+
+# AIC
+step.back.aic = step(M1, 
+                    direction = "backward",
+                    trace = FALSE) 
+step.fwd.aic = step(M0, 
+                   direction = "forward",
+                   scope = list(lower = M0, upper = M1),
+                   trace = FALSE)
+
+```
+
+
+Introduction {.unnumbered}
+========================================
+
+
+Background {#Background .unnumbered}
+-------------------
+Birth weight is strongly associated with a newborn’s immediate and long term health. Low birth weight (< 2500 grams) babies may be more prone to certain health issues, including sickness, infection, death in infancy, as well as susceptibility to chronic diseases later in life. High birth weight (>4000 grams) is linked to an increased risk of birth injuries, infancy mortality and long-term secretion disorders. Thus, the medical profession and society have been widely concerned for decades about the management of birth weight, with research indicating that infant birth weight is largely influenced by maternal pre-pregnancy health behaviour and characteristics. For instance, birth weight has innate racial disparities and is positively associated with the maternal level of obesity or emaciation before pregnancy. Additionally, smoking during pregnancy and tobacco exposure have been shown to significantly reduce the weight of newborns; advanced (>35 yr) or low (<16 yr) maternal age, and women with a history of hypertension or uterine irritability, are also more likely to deliver infants with a lower weight. Also, inadequate prenatal care can further raise the probability of premature labor and aberrant birth weight. The purpose of this study is to build a multiple linear regression model to predict infant birth weight given maternal health conditions, and explore which factors are significantly linked.
+
+Data Set {#data-set .unnumbered}
+-------------------
+
+The *birthwt* data set is sourced from Baystate Medical Center in 1986. However, the details of who collected the data and what was the method of collection are unclear. It contains 189 observations of birth with 10 variables, two of which are related to the baby’s *birth_weight* (dependent variable), while the other eight variables describe maternal health and behavior conditions. Data cleaning includes: attributes renamed for readability; discrete counts transformed into factors; and binary indicators converted into Boolean values (True or False). For the two **quantitative** independent variables: mother’s *age* and weight in pounds at last menstrual period, *weight_last_menstrual*, outliers were removed to improve statistical power. Remaining qualitative variables include: race, with three groups, white as 0, black as 1 and other as 2; *smoking_status* during pregnancy; a history of *hypertension*; and presence of uterine irritability, *uterine_irr*. The number of premature labour counts, as *premature_labor* is categorized into binary groups, 0 or 1+; and number of physician visits during the first trimester, as *physician_visits* is factorized into three groups, 0, 1, or 2+. Since the spread of *physician_visits* is skewed heavily towards 0, variables 1 and 2+ are combined due to consisting very few observations and to even the shape of spread.
+
+
+
+Analysis {.unnumbered}
+========================================
+
+Assumptions {#assumptions .unnumbered}
+-------------------
+To guarantee validity, assumption checks were performed before and after variable selection for both full model and final model. Continuous data not fitting the linearity assumption are removed, including the age variable, which the attempt of Log transformation was still unable to satisfy a linear relationship with the dependent variable. Nevertheless, a Log transform of *birth_weight* does strengthen the linear relationship between w.r.t. the *weight_last_menstrual* variable. Thus, a Log transform of the dependent variable (*birth_weight*) is retained in the following study. Categorical data not meeting assumptions of equal variance across groups or normal distribution should be removed as well. Following this data preprocessing, the remaining qualitative variables all satisfy these assumptions. That is, the health status or behaviour of one mother should not be affected by another, thus independence is justified. In Fig.1, the residual plot of the final model shows a residual spread that is almost symmetrically distributed and without clear patterns. This represents that the dispersion of the residual is consistent across the range of fitted *birth_weight* values, thus satisfying the homoskedasiticity assumption. The residual qqplot also demonstrates that most points closely follow to the 45-degree line, with slight or negligible deviation at the ends, and which upon relying on the CLT(Central Limit Theorem) - normality can be assumed.
+
+Model Selection {#model-selection .unnumbered}
+-------------------
+Because the *age* variable could not properly address the linearity assumption regardless of whether log transformation were applied, it was eliminated completely. Parameter selection of the final model is determined by the forward and backward stepwize Akaike information criterion (AIC). Variables are added to the null model in the forward method and removed from the full model in the backward method, until AIC no longer decreased - thus developing a model with predictors that minimise the AIC value. It shows that both method excluded the age variable which doesn’t fit the regression assumption. Interestingly, the p-value of *smoking_status* variable (0.053) is greater than the significance level (0.05), which indicates that whether or not the mother smokes has no significant influence on the birth weight. However, this contradicts the findings of several previous investigations and additionally, attempting to manually delete the variable decreases the model's r-squared value, thus reducing the model's predictive effectiveness. We have determined to include *smoking_status* in the final model.
+
+
+
+Results {.unnumbered}
+========================================
+
+Inferences {#inferences .unnumbered}
+-------------------
+
+$$\begin{aligned}
+\operatorname{log(birth\_weight)}=&7.8442-0.1314(\operatorname{race}_{\operatorname{black}})
+                             -0.1152(\operatorname{race}_{\operatorname{other}})\\
+                             &+0.0020(\operatorname{last\_menstrual\_weight})\\
+                             &-0.2143(\operatorname{uterine\_irritability}_{\operatorname{TRUE}}) \\
+                             &-0.2679(\operatorname{hypertension}_{\operatorname{TRUE}}) \\
+                             &-0.1020(\operatorname{smoke}_{\operatorname{TRUE}})+\epsilon
+\end{aligned} $$
+
+The significant coefficients of our model, represent the mean change in the response variable for one unit of change in the predictor variable - while holding all other predictors in the model constant. Each predictor variable in our model has on average, the following effect on the response variable (holding other predictors constant): A black racial background is associated with a ~13% decrease in birth weight; A racial background other than black or white is associated with a ~12% decrease in birth weight; A one pound increase in mother's last menstrual weight is associated with a ~0.2%increase in birth weight; A history of uterine irritability is associated with a ~21% decrease in birth weight; A history of hypertension is associated with a ~27% decrease in birth weight; and lastly, a positive smoking status prior to giving birth is associated with a~10% decrease in birth weight.
+```{r}
+full = lm(birth_weight ~ ., birthwt_lg)
+simp = lm(birth_weight ~ uterine_irr, birthwt_lg)
+final = lm(birth_weight ~ race + hypertension + uterine_irr + smoking_status + weight_last_menstrual, birthwt_lg)
+p1 <- effect_plot(final, int.type = "prediction", pred = uterine_irr, interval = TRUE, plot.points = TRUE, jitter = .2, cat.geom = "line", line.thickness = 0.5, point.size = 0.3, partial.residuals = TRUE, y.label='', cat.color = "red", cat.pred.point.size = 2, x.label = "Uterine Irritability", point.color = "red")
+p4 <- effect_plot(final, int.type = "prediction", pred = hypertension, interval = TRUE, plot.points = TRUE, jitter = .2, cat.geom = "line", line.thickness = 0.5, partial.residuals = TRUE, point.size = 0.3, cat.pred.point.size = 2, x.label = "Hypertension", y.label='')
+p2 <- effect_plot(final, int.type = "prediction", pred = race, interval = TRUE, plot.points = TRUE, jitter = .2,  cat.geom = "line", line.thickness = 0.5, partial.residuals = TRUE, point.size = 0.3, cat.pred.point.size = 2, y.label='', x.label = "Race")
+p3 <- effect_plot(final, int.type = "prediction", pred = smoking_status, interval = TRUE, plot.points = TRUE, jitter = .2,  cat.geom = "line", line.thickness = 0.5, partial.residuals = TRUE, point.size = 0.3, cat.pred.point.size = 2, y.label='', x.label = "Smoking Status")
+p5 <- effect_plot(final, int.type = "prediction", pred = weight_last_menstrual, interval = TRUE, plot.points = TRUE, cat.geom = "line", partial.residuals = TRUE, line.thickness = 0.5, point.size = 0.5, cat.pred.point.size = 2, x.label = "Mother's Weight (pounds)", point.color = "black", y.label = "log(Birth Weight in grams)", main.title = "\n")
+rcol <- cowplot::plot_grid(p1, p2, p3, p4, ncol=2, nrow=2)
+nest <- plot_grid(p5, rcol, nrow = 1, rel_widths = c(12, 13)) 
+title <- ggdraw() + 
+  draw_label(
+    "Fitted Values for log(Birth Weight in grams) vs Predictor Values",
+    fontface = 'bold',
+    x = 0,
+    hjust = 0
+  ) +
+  theme(
+    plot.margin = margin(0, 0, 0, 7)
+  )
+plt <- plot_grid(
+  title, nest,
+  ncol=1,
+  rel_heights = c(0.1, 1)
+)
+```
+
+
+```{r out of sample performance traning, message=FALSE, fig.height=4.5, fig.width=12, fig.retina=2, fig.align='center', warning=FALSE}
+set.seed(1)
+cv_settings = trainControl(
+    method = "repeatedcv", number = 10, repeats = 10,
+    verboseIter = FALSE
+  )
+cv_full = train(
+  birth_weight ~ ., 
+  birthwt_lg,
+  method = "lm",
+  trControl =  cv_settings
+)
+cv_step = train(
+  birth_weight ~ race + hypertension + uterine_irr + smoking_status + weight_last_menstrual, 
+  birthwt_lg,
+  method = "lm",
+  trControl =  cv_settings
+)
+cv_simple = train(
+  birth_weight ~ uterine_irr, 
+  birthwt_lg,
+  method = "lm",
+  trControl =  cv_settings
+)
+```
+
+```{r full model out of sample performance, eval=FALSE}
+cv_full$results
+```
+
+```{r step back out of sample performance, eval=FALSE}
+cv_step$results
+```
+```{r simple (uterine irr only) model out of sample performance, eval=FALSE}
+cv_simple$results
+```
+
+
+```{r}
+options(knitr.table.format = "latex")
+res <-bind_rows(cv_simple$results, cv_full$results, cv_step$results, .id = "column_label")
+out_tbl <- data.frame(
+  model = c("Simple", "Full", "Final"),
+  res[-c(0, 1, 2, 6, 7, 8)]
+) 
+out_tb = kbl(out_tbl, caption = "Out of Sample Performance of Models") %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+```
+
+```{r}
+full = lm(birth_weight ~ ., birthwt_lg)
+simp = lm(birth_weight ~ uterine_irr, birthwt_lg)
+final = lm(birth_weight ~ race + hypertension + uterine_irr + smoking_status + weight_last_menstrual, birthwt_lg)
+# in sample
+rmse = c(sqrt(mean(simp$residuals^2)), sqrt(mean(full$residuals^2)), sqrt(mean(final$residuals^2)))
+r2 = c(summary(simp)$r.squared, summary(full)$r.squared, summary(final)$r.squared)
+adj_r2 = c(summary(simp)$adj.r.squared, summary(full)$adj.r.squared, summary(final)$adj.r.squared)
+mae = c(mean(abs(simp$residuals)), mean(abs(full$residuals)), mean(abs(final$residuals)))
+          
+ins <-bind_rows(data.frame(rmse, r2, adj_r2, mae), .id = "column_label")
+in_tbl <- data.frame(
+  model = c("Simple", "Full", "Final"),
+  ins[-c(1)]
+) 
+in_tb = kbl(in_tbl, caption = "In Sample Performance of Models",
+            col.names = c("model",
+                          'RMSE',
+                          'Rsquared',
+                           "Adj-Rsquared",
+                           "MAE"))%>% kable_styling(latex_options = c("striped", "hold_position"))
+```
+
+
+```{r in sample RMSE}
+rmse_M1 = sqrt(mean(M1$residuals^2))
+rmse_final = sqrt(mean(final$residuals^2))
+rmse_final = sqrt(mean(final$residuals^2))
+mae_final = mean(abs(final$residuals))
+mae_M1 = mean(abs(M1$residuals))
+```
+
+Performance {#performance .unnumbered}
+-------------------
+
+We compared our final model with the full model, which contains all variables used as predictors; and the simple model, which contains the most significant predictor *uterine_irritability*. Out-sample performances are tested using the “Caret” package with 10 repeats of the 10-fold cross-validation method. This method is appropriate for smaller data sets such as *birthwt*, in attaining a more reliable reading for performance. As seen in our final model, results show an RMSE value of ~0.25 and an MAE value of ~0.19 - both lower than simple and full models. A lower RMSE and MAE value, implies higher accuracy as it minimises the difference between predicted and observed values.However, our model does record a low R-squared value of ~0.21. Additionally, in-sample R-squared and adjusted R-squared values also reveal low R-squared scores of ~0.22 and ~0.19. This indicates that our model only accounts for ~21% of the variation in the actual values for log birth weight. As these values are higher than both simple and full models, the final model is preferred in maximising the explanatory power of the model in relation to the response variable. Nonetheless, a low value conveys a weak relationship between our model and the response variable. This may mean that our model needs more variables to account for the remaining variation in data; or simply that the data itself is inherently unpredictable (too complex to be fully explained).  
+
+Although our model has a low R-squared score, a simple check for the p-value of the F-statistic shows *1.29e-07*, supporting our model as statistically significant in fitting the data compared to a model in the rejected H0 - where predictors are assumed to have no relationship with the log of birth weight. In addition, our model can still be used to draw conclusions about how changes in the predictor values can effect changes in the response variable (as shown above). For making predictions - the low R-squared value does hint towards lower precision, i.e. having a wider prediction interval (PI). Consider row 100 from *birthwt_lg*; this mother is 100 pounds, white, smokes, has had no history of hypertension or uterine irritability. According to our model the log birth weight value should be ~7.73 with a 95% PI of [~7.23, ~8.23]. The actual value for row 100 is ~7.92 (also within PI). If we back-transform our model, the predicted birth weight in grams is the multiplication of all exponentiated predicted variables when multiplied with corresponding predictor values. Thus, row 100 is predicted using back-transformed coefficients to be ~2820.45 grams. The actual predicted birth weight value for row 100 is 2769 grams. This is a ~51 gram difference - not bad! However, this is only for one point chosen from the data set. More interestingly, the scaled PI after back-transforming is [~2589.89, ~2948.11] - this is an interval of ~358 grams.
+
+
+
+```{r}
+full_predicted = predict(M1, birthwt_lg)
+final_predicted = predict(final, birthwt_lg)
+#RMSE(full_predicted,birthwt_lg$birth_weight)
+# RMSE(final_predicted, cleaned_data$birth_weight)
+#summary(step.back.aic)$coefficients %>% round(4)
+#summary(M1)$coefficients %>% round(4)
+#summary(final)$coefficients %>% round(4)
+#summary(step.back.aic)$coefficients %>% round(4)
+#summary(final)$coefficients %>% round(4)
+```
+
+Discussion {.unnumbered}
+========================================
+
+Limitations {#limitations .unnumbered}
+-------------------
+In general:
+  The predicted r-squared value attained via cross-validation indicates that the final model is only able to explain at most ~21% of total birth weight variance.The reliability of model is questionable since sample size is small (189 observations),which has limited the ability to predict infant birth weight by five predictors. With data collected in 1986 considered outdated, and demography likely to have changed significantly - the data is likely inconsistent with the present.Better medical treatment, social welfare, and human rights could even out variables such as racial effect on birth weight.All observations coming from one medical center may result in selection bias, such that the model is incapable of effectively capturing the whole human population.There is no information about who and how the data is collected, so accuracy and credibility of the data is in doubt. Moreover, because of improper collecting techniques, samples may interact and affect each other, causing the data to fail in fulfilling the model's independence assumption.
+
+For specific variables: 
+  Only 12 of the 189 women had a history of hypertension, making it difficult to determine if birth weight is normally distributed for this group, and there will be deviations owing to insufficient sample size when measuring the influence of this variable.Furthermore, additional factors that have been discovered to have a significant impact on birth weight in previous research, such as baby's gestational age, indicator of gestational diabetes and average alcohol intake during the duration of the pregnancy are not addressed by.The inadequate consideration of potential factors may also reduce the predictive power of the final model.
+
+
+
+Conclusion {#conclusion .unnumbered}
+-------------------
+To guarantee variety and minimize selection bias, further research should utilize larger and more recent datasets, with sample collection from medical centers from diverse locations. In addition, other maternal health factor categories should be explored for collection, and details such as sample data gathering techniques should be included for validation. This can assist in providing a more comprehensive and rigorous perspective on which factors contribute to birth weight.
+
+Appendix {.unnumbered}
+========================================
+
+\begin{figure}[h]
+\centering
+```{r echo=FALSE, fig.width=7,fig.height=3.5, dpi=300,out.width="240px",out.height="150px", warning=FALSE}
+autoplot(step.back.aic, which = c(1,2))
+```
+\caption{Residuals plots for the final regression model}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+```{r echo=FALSE, fig.width=7,fig.height=3.5, dpi=300,out.width="240px",out.height="150px", warning=FALSE}
+plt
+```
+\caption{Predictor effect plots for the final regression model}
+\end{figure}
+
+```{r echo=FALSE, fig.width=7,fig.height=3.5, dpi=300,out.width="240px",out.height="150px", warning=FALSE}
+out_tb
+```
+
+```{r echo=FALSE, fig.width=7,fig.height=3.5, dpi=300,out.width="240px",out.height="150px", warning=FALSE}
+in_tb
+```
+
+References {.unnumbered}
+========================================
+
+[GitHub repository](https://github.sydney.edu.au/mpod2632/DATA2002_LAB-03-RE_early_3/wiki)
+
+[1] Bernstein, I., Mongeon, J., Badger, G., Solomon, L., Heil, S. and Higgins, S., 2005. Maternal Smoking and Its Association With Birth Weight. Obstetrics & Gynecology, 106(5, Part 1), pp.986-991.
+
+[2] England, L., 2001. Measures of Maternal Tobacco Exposure and Infant Birth Weight at Term. American Journal of Epidemiology, 153(10), pp.954-960.
+
+[3] Frederick, I., Williams, M., Sales, A., Martin, D. and Killien, M., 2007. Pre-pregnancy Body Mass Index, Gestational Weight Gain, and Other Maternal Characteristics in Relation to Infant Birth Weight. Maternal and Child Health Journal, 12(5), pp.557-567.
+
+[4] Goisis, A., Remes, H., Barclay, K., Martikainen, P. and Myrskylä, M., 2017. Advanced Maternal Age and the Risk of Low Birth Weight and Preterm Delivery: a Within-Family Analysis Using Finnish Population Registers. American Journal of Epidemiology, 186(11), pp.1219-1226.
+
+[5] González-Jiménez, J., & Rocha-Buelvas, A. (2018). Risk factors associated with low birth weight in the Americas: literature review. Revista De La Facultad De Medicina, 66(2), 255-260. doi: 10.15446/revfacmed.v66n2.61577
+
+[6] Journal of Nurse-Midwifery, 1986. Maternal weight and birth weight Abrams B, Laros R: Prepregnancy weight, weight gain, and birth weight. AM 3 OBSTET GYNECOL 154:503, 1986. 31(5), p.242.
+
+[7] Rahfiludin, M., & Dharmawan, Y. (2018). Risk Factors Associated with Low Birth Weight. Kesmas: National Public Health Journal, 13(2). doi: 10.21109/kesmas.v13i2.1719
+
+[8] (2021). Retrieved 27 October 2021, from https://www.who.int/classifications/icd/ICD-10_2nd_ed_volume2.pdf
+
+[9] Wilcox, A., 2001. On the importance—and the unimportance— of birthweight. International Journal of Epidemiology, 30(6), pp.1233-1241.
+
+[10] Wiley-Blackwell. (2011, December 13). Mothers' weight before and during pregnancy affects baby's weight. ScienceDaily. Retrieved October 25, 2021 from www.sciencedaily.com/releases/2011/12/111213110521.htm
+
+
+
+
+\showmatmethods
+\pnasbreak
