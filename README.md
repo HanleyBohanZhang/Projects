@@ -36,8 +36,8 @@
 * **Data2001: Data Science, Big Data and Data Variety Group Project - Sydney Liveability Analysis**
   * 2 person group project
   * **Programming language:** Python (Jupyter notebook)
-  * Description: This study is aimed to investigate the liveability for each suburb in SA2(Greate Sydney) area through computing liveability score by the Sigmoid function of z-score using multiple datasets such as census- based data and geospatial data. The final liveability score yields by calculating z-score for five dimensions of school catchments, accom- modation and food service facilities, retail service facilities, crime frequency and health services.
-  * Personal Contribution: Connect database (PgAdmine) with Jupyter notebook; Merge multi-formating data set including csv dataset, geometric dataset and json semi-structure dataset; Write the final report 
+  * **Description:** This study is aimed to investigate the liveability for each suburb in SA2(Greate Sydney) area through computing liveability score by the Sigmoid function of z-score using multiple datasets such as census- based data and geospatial data. The final liveability score yields by calculating z-score for five dimensions of school catchments, accom- modation and food service facilities, retail service facilities, crime frequency and health services.
+  * **Personal Contribution:** Connect database (PgAdmine) with Jupyter notebook; Merge multi-formating data set including csv dataset, geometric dataset and json semi-structure dataset; Write the final report 
   * **Outcome**:
     * [Data Analysis Jupyter Notebook code file](https://github.com/HanleyBohanZhang/Projects/blob/main/2022S1Data2001/data2001%20final.ipynb)
     * [Report pdf](https://github.com/HanleyBohanZhang/Projects/blob/main/2022S1Data2001/Sydney%20Liveability%20Analysis%20Assignment.pdf)
@@ -46,8 +46,8 @@
 * **Data3406: Human-in-the-loop Data Science -  Analyse the Personal Step Trends across Week**
   * 3 person group project
   * **Programming language:** Python (Jupyter Notebook)
-  * Description: This study aims to explore the individual's activity trends across the week (such as weekdays versus weekends) through step count data collecting from Apple health during 2022. We explore the trends across the week based on specific details: difference trend between weekday & weekend, step intensity pattern and adherence measures for one participant.
-  * Personal Contribution: Ethical analysis; Background research; Initial Data Analysis including plot and analyse the histgram and grouped box plot; identify the average hourly step trend across Workday and Weekend through line chart ; stakeholder analysis and limitation discussion 
+  * **Description:** This study aims to explore the individual's activity trends across the week (such as weekdays versus weekends) through step count data collecting from Apple health during 2022. We explore the trends across the week based on specific details: difference trend between weekday & weekend, step intensity pattern and adherence measures for one participant.
+  * **Personal Contribution:** Ethical analysis; Background research; Initial Data Analysis including plot and analyse the histgram and grouped box plot; identify the average hourly step trend across Workday and Weekend through line chart ; stakeholder analysis and limitation discussion 
   * **Outcome**: 
     * [Product Notebook](https://github.com/HanleyBohanZhang/Projects/blob/main/2022S2Data3406/Product_Notebook_Final_Version.ipynb)
   * Time: October 2022
