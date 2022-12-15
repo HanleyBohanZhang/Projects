@@ -5,7 +5,7 @@
 
 ## Project Details
 
-*  **Engg1801: Engineering Computing - Computer Lab test**
+* **Engg1801: Engineering Computing - Computer Lab test**
   * Individual work
   * **Programming language:** Matlab 
   * **Description:** Basic computing and video creation through Matlab
